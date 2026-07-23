@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\SYSTEM\OLED -I ..\SYSTEM\ADC -I ..\FONT -I ..\SYSTEM\GPS -I ..\SYSTEM\SIM800C -I ..\SYSTEM\MPU6050 -I ..\SYSTEM\MPU6050\eMPL -I ..\SYSTEM\RTC -I ..\SYSTEM\MAX30102 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\MQTT -I ..\SYSTEM\DS18B20 -I ..\SYSTEM\StepAlgorithm
+-I.\RTE\_STM32F103RCT6
+-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include
+-IC:\Keil_v5\ARM\CMSIS\Include
+-D__UVISION_VERSION="525" -DSTM32F10X_HD -DSTM32F10X_HD
+-o .\objects\stepalgorithm.o --omf_browse .\objects\stepalgorithm.crf --depend .\objects\stepalgorithm.d "..\SYSTEM\StepAlgorithm\stepAlgorithm.c"

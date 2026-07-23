@@ -1,0 +1,297 @@
+<view class="page">
+  <!-- 顶部 Hero -->
+  <view class="hero">
+    <view class="hero-bg"></view>
+    <view class="hero-content">
+      <view class="hero-top">
+        <view>
+          <view class="hero-title">🍃 智慧果园</view>
+          <view class="hero-sub">Smart Orchard Monitor</view>
+        </view>
+        <view class="online-badge {{online ? 'on' : 'off'}}">
+          <view class="pulse-dot"></view>
+          <text>{{online ? '在线' : '离线'}}</text>
+        </view>
+      </view>
+      <view class="hero-time">更新于 {{updatedAt || '等待数据...'}}</view>
+    </view>
+
+    <!-- 胶囊 Tab -->
+    <view class="tab-pill">
+      <view class="tab-item {{tab === 0 ? 'active' : ''}}" data-tab="0" bindtap="switchTab">
+        <text class="tab-icon">📊</text>
+        <text>监控</text>
+      </view>
+      <view class="tab-item {{tab === 1 ? 'active' : ''}}" data-tab="1" bindtap="switchTab">
+        <text class="tab-icon">🎛️</text>
+        <text>控制</text>
+      </view>
+      <view class="tab-item {{tab === 2 ? 'active' : ''}}" data-tab="2" bindtap="switchTab">
+        <text class="tab-icon">⚙️</text>
+        <text>阈值</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 监控 -->
+  <view wx:if="{{tab === 0}}" class="panel">
+    <view class="alarm-card {{alarmWarn ? 'warn' : 'ok'}}">
+      <text class="alarm-icon">{{alarmWarn ? '⚠️' : '✅'}}</text>
+      <view class="alarm-body">
+        <text class="alarm-title">{{alarmWarn ? '系统告警' : '运行正常'}}</text>
+        <text class="alarm-desc">{{alarmText}}</text>
+      </view>
+    </view>
+
+    <view class="section-label">实时传感</view>
+    <view class="sensor-grid">
+      <view
+        class="sensor-card {{item.theme}} {{item.wide ? 'wide' : ''}}"
+        wx:for="{{sensors}}"
+        wx:key="key"
+      >
+        <view class="sensor-top">
+          <view class="sensor-icon-wrap">{{item.icon}}</view>
+          <text class="sensor-label">{{item.label}}</text>
+        </view>
+        <view class="sensor-value-row">
+          <text class="sensor-num">{{item.num}}</text>
+          <text class="sensor-unit">{{item.unit}}</text>
+        </view>
+        <view class="progress-track">
+          <view class="progress-fill" style="width: {{item.pct}}%;"></view>
+        </view>
+        <text class="sensor-hint">{{item.hint}}</text>
+      </view>
+    </view>
+
+    <view class="section-label">设备状态</view>
+    <view class="card status-card">
+      <view class="status-grid">
+        <view class="status-chip">
+          <text class="chip-icon">🔄</text>
+          <text class="chip-label">模式</text>
+          <text class="chip-val">{{modeText}}</text>
+        </view>
+        <view class="status-chip {{pump ? 'active' : ''}}">
+          <text class="chip-icon">💧</text>
+          <text class="chip-label">水泵</text>
+          <text class="chip-val">{{pump ? '运行' : '停止'}}</text>
+        </view>
+        <view class="status-chip {{fan ? 'active' : ''}}">
+          <text class="chip-icon">🌀</text>
+          <text class="chip-label">风扇</text>
+          <text class="chip-val">{{fan ? '运行' : '停止'}}</text>
+        </view>
+        <view class="status-chip {{fill ? 'active' : ''}}">
+          <text class="chip-icon">💡</text>
+          <text class="chip-label">补光</text>
+          <text class="chip-val">{{fill ? '开启' : '关闭'}}</text>
+        </view>
+        <view class="status-chip servo-chip">
+          <text class="chip-icon">🦾</text>
+          <text class="chip-label">舵机</text>
+          <text class="chip-val">{{servo}}°</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{historyPreview.length}}">
+      <view class="card-head">
+        <view class="card-head-line"></view>
+        <text class="card-title">近期记录</text>
+        <text class="card-badge">近 6 小时</text>
+      </view>
+      <view class="timeline">
+        <view class="timeline-item" wx:for="{{historyPreview}}" wx:key="time">
+          <view class="timeline-dot {{item.last ? 'last' : ''}}"></view>
+          <view class="timeline-content">
+            <text class="timeline-time">{{item.time}}</text>
+            <view class="timeline-tags">
+              <text class="tag tag-temp">🌡 {{item.temp}}°C</text>
+              <text class="tag tag-soil">🌱 {{item.soil}}V</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="history-foot">数据库共 {{historyCount}} 条记录</view>
+    </view>
+  </view>
+
+  <!-- 控制 -->
+  <view wx:if="{{tab === 1}}" class="panel">
+    <view class="card">
+      <view class="card-head">
+        <view class="card-head-line"></view>
+        <text class="card-title">运行模式</text>
+      </view>
+      <view class="mode-switch">
+        <view
+          class="mode-option {{mode === 'auto' ? 'selected' : ''}} {{!online ? 'disabled' : ''}}"
+          data-mode="auto"
+          bindtap="setMode"
+        >
+          <text class="mode-icon">🤖</text>
+          <text class="mode-name">自动</text>
+          <text class="mode-desc">智能调控</text>
+        </view>
+        <view
+          class="mode-option {{mode === 'manual' ? 'selected' : ''}} {{!online ? 'disabled' : ''}}"
+          data-mode="manual"
+          bindtap="setMode"
+        >
+          <text class="mode-icon">✋</text>
+          <text class="mode-name">手动</text>
+          <text class="mode-desc">远程操控</text>
+        </view>
+      </view>
+      <view class="hint-box">手动开关设备时会自动切换为手动模式</view>
+    </view>
+
+    <view class="section-label">设备控制</view>
+    <view class="device-list">
+      <view class="device-card {{pump ? 'on' : ''}}">
+        <view class="device-left">
+          <view class="device-icon pump-icon">💧</view>
+          <view>
+            <text class="device-name">水泵</text>
+            <text class="device-status">{{pump ? '正在灌溉' : '已停止'}}</text>
+          </view>
+        </view>
+        <switch checked="{{pump === 1}}" bindchange="togglePump" disabled="{{!online}}" color="#40916c" />
+      </view>
+      <view class="device-card {{fan ? 'on' : ''}}">
+        <view class="device-left">
+          <view class="device-icon fan-icon">🌀</view>
+          <view>
+            <text class="device-name">风扇</text>
+            <text class="device-status">{{fan ? '正在散热' : '已停止'}}</text>
+          </view>
+        </view>
+        <switch checked="{{fan === 1}}" bindchange="toggleFan" disabled="{{!online}}" color="#40916c" />
+      </view>
+      <view class="device-card {{fill ? 'on' : ''}}">
+        <view class="device-left">
+          <view class="device-icon fill-icon">💡</view>
+          <view>
+            <text class="device-name">补光灯</text>
+            <text class="device-status">{{fill ? '补光中' : '已关闭'}}</text>
+          </view>
+        </view>
+        <switch checked="{{fill === 1}}" bindchange="toggleFill" disabled="{{!online}}" color="#40916c" />
+      </view>
+    </view>
+
+    <view class="card servo-card">
+      <view class="card-head">
+        <view class="card-head-line"></view>
+        <text class="card-title">舵机角度</text>
+        <text class="servo-badge">{{servoDraft}}°</text>
+      </view>
+      <view class="servo-visual">
+        <view class="servo-arc">
+          <view class="servo-needle" style="transform: rotate({{servoDraft - 90}}deg);"></view>
+        </view>
+      </view>
+      <slider
+        class="servo-slider"
+        min="0"
+        max="180"
+        step="1"
+        value="{{servoDraft}}"
+        activeColor="#40916c"
+        backgroundColor="#e8f0eb"
+        block-color="#2d6a4f"
+        block-size="24"
+        disabled="{{!online}}"
+        bindtouchstart="onServoTouchStart"
+        bindchanging="onServoChanging"
+        bindchange="onServoChange"
+      />
+      <view class="servo-scale">
+        <text>0°</text>
+        <text>90°</text>
+        <text>180°</text>
+      </view>
+      <button class="btn-primary servo-btn" bindtap="onServoCommit" disabled="{{!online}}">应用角度</button>
+    </view>
+
+    <view class="msg {{online ? 'ok' : 'error'}}">{{controlMsg || (online ? '设备已连接，可以远程控制' : '设备离线，无法控制')}}</view>
+  </view>
+
+  <!-- 阈值 -->
+  <view wx:if="{{tab === 2}}" class="panel">
+    <view class="card th-card">
+      <view class="card-head">
+        <view class="card-head-line"></view>
+        <text class="card-title">温度阈值</text>
+        <text class="th-unit">°C</text>
+      </view>
+      <view class="th-pair">
+        <view class="th-field">
+          <text class="th-label">🌀 开启风扇</text>
+          <input class="th-input" type="digit" value="{{thTempOpen}}" data-field="thTempOpen" bindinput="onThInput" />
+        </view>
+        <view class="th-field">
+          <text class="th-label">❄️ 关闭风扇</text>
+          <input class="th-input" type="digit" value="{{thTempClose}}" data-field="thTempClose" bindinput="onThInput" />
+        </view>
+      </view>
+    </view>
+
+    <view class="card th-card">
+      <view class="card-head">
+        <view class="card-head-line"></view>
+        <text class="card-title">环境电压阈值</text>
+        <text class="th-unit">V</text>
+      </view>
+      <view class="th-group">
+        <text class="th-group-title">☀️ 补光</text>
+        <view class="th-pair">
+          <view class="th-field">
+            <text class="th-label">开启</text>
+            <input class="th-input" type="digit" value="{{thLightOn}}" data-field="thLightOn" bindinput="onThInput" />
+          </view>
+          <view class="th-field">
+            <text class="th-label">关闭</text>
+            <input class="th-input" type="digit" value="{{thLightOff}}" data-field="thLightOff" bindinput="onThInput" />
+          </view>
+        </view>
+      </view>
+      <view class="th-group">
+        <text class="th-group-title">🌱 浇水</text>
+        <view class="th-pair">
+          <view class="th-field">
+            <text class="th-label">开启</text>
+            <input class="th-input" type="digit" value="{{thSoilOn}}" data-field="thSoilOn" bindinput="onThInput" />
+          </view>
+          <view class="th-field">
+            <text class="th-label">关闭</text>
+            <input class="th-input" type="digit" value="{{thSoilOff}}" data-field="thSoilOff" bindinput="onThInput" />
+          </view>
+        </view>
+      </view>
+      <view class="th-group">
+        <text class="th-group-title">💨 气体报警</text>
+        <view class="th-pair">
+          <view class="th-field">
+            <text class="th-label">开启</text>
+            <input class="th-input" type="digit" value="{{thMq2On}}" data-field="thMq2On" bindinput="onThInput" />
+          </view>
+          <view class="th-field">
+            <text class="th-label">关闭</text>
+            <input class="th-input" type="digit" value="{{thMq2Off}}" data-field="thMq2Off" bindinput="onThInput" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <button class="btn-primary save-btn" bindtap="submitThreshold" disabled="{{!online}}">💾 保存到设备</button>
+    <view class="msg ok">{{thresholdMsg || '修改后将同步至 STM32 并写入 EEPROM'}}</view>
+  </view>
+
+  <view wx:if="{{loading && tab === 0}}" class="loading-wrap">
+    <view class="loading-spinner"></view>
+    <text>正在连接果园...</text>
+  </view>
+</view>

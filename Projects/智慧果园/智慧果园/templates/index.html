@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧果园监控系统</title>
+    <style>
+        :root {
+            --green-dark: #2d6a4f;
+            --green-main: #40916c;
+            --green-light: #d8f3dc;
+            --orange: #e07a2f;
+            --brown: #8b5a2b;
+            --card-bg: #ffffff;
+            --text: #1b4332;
+            --muted: #52796f;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            margin: 0;
+            background: linear-gradient(160deg, #e8f5e9 0%, #fff8e7 45%, #f1f8e9 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--green-dark), var(--green-main));
+            color: #fff;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 16px rgba(45, 106, 79, 0.25);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            margin: 0.3rem 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .status-bar {
+            text-align: right;
+            font-size: 0.85rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            background: #ccc;
+        }
+
+        .dot.online { background: #52b788; box-shadow: 0 0 8px #52b788; }
+        .dot.offline { background: #e63946; }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.1rem;
+            color: var(--brown);
+            border-left: 4px solid var(--orange);
+            padding-left: 0.6rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(64, 145, 108, 0.12);
+            text-align: center;
+        }
+
+        .card .label {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .card .unit {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-left: 4px;
+        }
+
+        .card .hint {
+            margin-top: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge.on { background: #d8f3dc; color: #1b4332; }
+        .badge.off { background: #f1f1f1; color: #666; }
+        .badge.auto { background: #cce5ff; color: #1d3557; }
+        .badge.manual { background: #ffe5b4; color: #7f4f24; }
+
+        .alarm-box {
+            background: #fff;
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            min-height: 56px;
+        }
+
+        .alarm-ok { color: var(--green-main); }
+        .alarm-warn { color: #e63946; }
+
+        .control-panel {
+            background: #fff;
+            border-radius: 14px;
+            padding: 1.2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 0.55rem 1rem;
+            cursor: pointer;
+            background: var(--green-main);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        button:hover { background: var(--green-dark); }
+        button.secondary { background: #6c757d; }
+        button.danger { background: #e63946; }
+
+        select, input[type=number] {
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        #control_msg {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        .threshold-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .threshold-grid label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .history-panel {
+            background: #fff;
+            border-radius: 14px;
+            padding: 1.2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .history-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .history-toolbar button.active {
+            background: var(--green-dark);
+        }
+
+        .history-meta {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .chart-wrap {
+            position: relative;
+            height: 320px;
+        }
+
+        .chart-wrap + .chart-wrap {
+            margin-top: 1rem;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>智慧果园监控系统</h1>
+            <p class="subtitle">STM32 物联网大棚 · 实时环境监测与设备状态</p>
+        </div>
+        <div class="status-bar">
+            <p><span id="online_dot" class="dot offline"></span><span id="online_text">设备离线</span></p>
+            <p id="updated_at">最近更新：--</p>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="section-title">环境数据</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="label">空气温度</div>
+                <div><span class="value" id="temp">--</span><span class="unit">℃</span></div>
+                <div class="hint" id="temp_hint">适宜范围 15~32℃</div>
+            </div>
+            <div class="card">
+                <div class="label">空气湿度</div>
+                <div><span class="value" id="humi">--</span><span class="unit">%</span></div>
+                <div class="hint" id="humi_hint">适宜范围 40~80%</div>
+            </div>
+            <div class="card">
+                <div class="label">光照强度</div>
+                <div><span class="value" id="light">--</span><span class="unit">V</span></div>
+                <div class="hint" id="light_hint">传感器电压值</div>
+            </div>
+            <div class="card">
+                <div class="label">土壤湿度</div>
+                <div><span class="value" id="soil">--</span><span class="unit">V</span></div>
+                <div class="hint" id="soil_hint">数值越低越干燥</div>
+            </div>
+            <div class="card">
+                <div class="label">气体浓度</div>
+                <div><span class="value" id="mq2">--</span><span class="unit">V</span></div>
+                <div class="hint" id="mq2_hint">MQ-2 传感器</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">历史趋势</h2>
+        <div class="history-panel">
+            <div class="history-toolbar">
+                <button class="history-range active" data-hours="6" onclick="setHistoryRange(6)">近6小时</button>
+                <button class="history-range" data-hours="24" onclick="setHistoryRange(24)">近24小时</button>
+                <button class="history-range" data-hours="168" onclick="setHistoryRange(168)">近7天</button>
+                <span class="history-meta" id="history_meta">加载中...</span>
+            </div>
+            <div class="chart-wrap">
+                <canvas id="chart_env"></canvas>
+            </div>
+            <div class="chart-wrap">
+                <canvas id="chart_sensor"></canvas>
+            </div>
+        </div>
+
+        <h2 class="section-title">设备状态</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="label">运行模式</div>
+                <span id="mode_badge" class="badge auto">自动</span>
+            </div>
+            <div class="card">
+                <div class="label">灌溉水泵</div>
+                <span id="pump_badge" class="badge off">关闭</span>
+            </div>
+            <div class="card">
+                <div class="label">通风风扇</div>
+                <span id="fan_badge" class="badge off">关闭</span>
+            </div>
+            <div class="card">
+                <div class="label">补光灯</div>
+                <span id="fill_badge" class="badge off">关闭</span>
+            </div>
+            <div class="card">
+                <div class="label">舵机角度</div>
+                <div><span class="value" id="servo">--</span><span class="unit">°</span></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">告警信息</h2>
+        <div class="alarm-box">
+            <span id="alarm_text" class="alarm-ok">当前无告警</span>
+        </div>
+
+        <h2 class="section-title">远程控制</h2>
+        <div class="control-panel">
+            <p style="color:var(--muted);font-size:0.85rem;margin-top:0;">
+                控制水泵/风扇/补光前请先切换为<strong>手动模式</strong>。自动模式下设备由传感器逻辑控制。
+            </p>
+            <div class="control-row">
+                <label>模式</label>
+                <select id="ctl_mode">
+                    <option value="0">自动</option>
+                    <option value="1">手动</option>
+                </select>
+                <button onclick="sendControl({mode: Number(document.getElementById('ctl_mode').value), pump:-1, fan:-1, fill:-1, servo:-1})">应用模式</button>
+            </div>
+            <div class="control-row">
+                <button onclick="toggleDevice('pump')">水泵 开/关</button>
+                <button onclick="toggleDevice('fan')">风扇 开/关</button>
+                <button onclick="toggleDevice('fill')">补光 开/关</button>
+                <label>舵机</label>
+                <input id="ctl_servo" type="number" min="0" max="180" value="90">
+                <button onclick="sendControl({mode:1, pump:-1, fan:-1, fill:-1, servo:Number(document.getElementById('ctl_servo').value)})">设置舵机</button>
+            </div>
+            <div id="control_msg"></div>
+        </div>
+
+        <h2 class="section-title">阈值设置</h2>
+        <div class="control-panel">
+            <p style="color:var(--muted);font-size:0.85rem;margin-top:0;">
+                电压类阈值单位为 V（内部按 x10 传输）。保存后立即下发到 STM32。
+            </p>
+            <div class="threshold-grid">
+                <label>温度上限(℃)<input id="th_temp_open" type="number" min="1" max="50"></label>
+                <label>温度下限(℃)<input id="th_temp_close" type="number" min="0" max="49"></label>
+                <label>光照开启(V)<input id="th_light_on" type="number" min="0" max="5" step="0.1"></label>
+                <label>光照关闭(V)<input id="th_light_off" type="number" min="0" max="5" step="0.1"></label>
+                <label>土壤灌溉(V)<input id="th_soil_on" type="number" min="0" max="5" step="0.1"></label>
+                <label>土壤停灌(V)<input id="th_soil_off" type="number" min="0" max="5" step="0.1"></label>
+                <label>气体报警(V)<input id="th_mq2_on" type="number" min="0" max="5" step="0.1"></label>
+                <label>气体恢复(V)<input id="th_mq2_off" type="number" min="0" max="5" step="0.1"></label>
+            </div>
+            <div class="control-row">
+                <button onclick="sendThreshold()">保存阈值</button>
+            </div>
+            <div id="threshold_msg"></div>
+        </div>
+    </main>
+
+    <script>
+        let latest = {};
+        let pumpState = 0;
+        let fanState = 0;
+        let fillState = 0;
+        let thresholdLoaded = false;
+        let historyHours = 6;
+        let chartEnv = null;
+        let chartSensor = null;
+
+        const ALARM_MAP = {
+            0x01: "气体浓度异常",
+            0x02: "土壤过干",
+            0x04: "光照不足",
+            0x08: "温度过高",
+            0x10: "温度过低"
+        };
+
+        function setBadge(id, on, onText, offText) {
+            const el = document.getElementById(id);
+            el.textContent = on ? onText : offText;
+            el.className = "badge " + (on ? "on" : "off");
+        }
+
+        function parseAlarm(alarm) {
+            if (!alarm) {
+                return { text: "当前无告警", warn: false };
+            }
+            const items = [];
+            for (const [bit, text] of Object.entries(ALARM_MAP)) {
+                if (alarm & Number(bit)) {
+                    items.push(text);
+                }
+            }
+            if (items.length === 0) {
+                return { text: "当前无告警", warn: false };
+            }
+            return { text: items.join(" · "), warn: true };
+        }
+
+        function x10ToVolt(value) {
+            if (value === null || value === undefined) return "";
+            return (Number(value) / 10).toFixed(1);
+        }
+
+        function voltToX10(inputId) {
+            return Math.round(Number(document.getElementById(inputId).value) * 10);
+        }
+
+        function syncThresholdInputs(data) {
+            if (thresholdLoaded) return;
+            if (data.temp_open === undefined) return;
+            document.getElementById("th_temp_open").value = data.temp_open;
+            document.getElementById("th_temp_close").value = data.temp_close;
+            document.getElementById("th_light_on").value = x10ToVolt(data.light_on_x10);
+            document.getElementById("th_light_off").value = x10ToVolt(data.light_off_x10);
+            document.getElementById("th_soil_on").value = x10ToVolt(data.soil_on_x10);
+            document.getElementById("th_soil_off").value = x10ToVolt(data.soil_off_x10);
+            document.getElementById("th_mq2_on").value = x10ToVolt(data.mq2_on_x10);
+            document.getElementById("th_mq2_off").value = x10ToVolt(data.mq2_off_x10);
+            thresholdLoaded = true;
+        }
+
+        function buildChartOptions(yTitle) {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: "index", intersect: false },
+                plugins: {
+                    legend: { position: "top" },
+                    tooltip: { mode: "index", intersect: false }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 8
+                        }
+                    },
+                    y: {
+                        title: { display: true, text: yTitle }
+                    }
+                }
+            };
+        }
+
+        function formatChartLabel(ts) {
+            if (!ts) return "";
+            return ts.slice(5, 16);
+        }
+
+        function updateHistoryCharts(records) {
+            const labels = records.map(item => formatChartLabel(item.ts));
+
+            if (!chartEnv) {
+                chartEnv = new Chart(document.getElementById("chart_env"), {
+                    type: "line",
+                    data: {
+                        labels,
+                        datasets: [
+                            {
+                                label: "温度(℃)",
+                                data: records.map(item => item.temp),
+                                borderColor: "#e07a2f",
+                                backgroundColor: "rgba(224, 122, 47, 0.12)",
+                                tension: 0.25,
+                                spanGaps: true
+                            },
+                            {
+                                label: "湿度(%)",
+                                data: records.map(item => item.humi),
+                                borderColor: "#40916c",
+                                backgroundColor: "rgba(64, 145, 108, 0.12)",
+                                tension: 0.25,
+                                spanGaps: true
+                            }
+                        ]
+                    },
+                    options: buildChartOptions("数值")
+                });
+            } else {
+                chartEnv.data.labels = labels;
+                chartEnv.data.datasets[0].data = records.map(item => item.temp);
+                chartEnv.data.datasets[1].data = records.map(item => item.humi);
+                chartEnv.update("none");
+            }
+
+            if (!chartSensor) {
+                chartSensor = new Chart(document.getElementById("chart_sensor"), {
+                    type: "line",
+                    data: {
+                        labels,
+                        datasets: [
+                            {
+                                label: "光照(V)",
+                                data: records.map(item => item.light),
+                                borderColor: "#f4a261",
+                                tension: 0.25,
+                                spanGaps: true
+                            },
+                            {
+                                label: "土壤(V)",
+                                data: records.map(item => item.soil),
+                                borderColor: "#8b5a2b",
+                                tension: 0.25,
+                                spanGaps: true
+                            },
+                            {
+                                label: "气体(V)",
+                                data: records.map(item => item.mq2),
+                                borderColor: "#6c757d",
+                                tension: 0.25,
+                                spanGaps: true
+                            }
+                        ]
+                    },
+                    options: buildChartOptions("电压(V)")
+                });
+            } else {
+                chartSensor.data.labels = labels;
+                chartSensor.data.datasets[0].data = records.map(item => item.light);
+                chartSensor.data.datasets[1].data = records.map(item => item.soil);
+                chartSensor.data.datasets[2].data = records.map(item => item.mq2);
+                chartSensor.update("none");
+            }
+        }
+
+        async function fetchHistory() {
+            const meta = document.getElementById("history_meta");
+            try {
+                const response = await fetch("/history?hours=" + historyHours);
+                const data = await response.json();
+                const records = data.records || [];
+                const rangeText = historyHours <= 24
+                    ? historyHours + " 小时"
+                    : Math.round(historyHours / 24) + " 天";
+                meta.textContent =
+                    "本时段 " + data.count + " 条 · 库内共 " + (data.total_records || 0) + " 条 · 保留 " + rangeText;
+                if (records.length === 0) {
+                    meta.textContent += " · 暂无历史数据，请等待设备上报";
+                    if (chartEnv) {
+                        chartEnv.data.labels = [];
+                        chartEnv.data.datasets.forEach(ds => { ds.data = []; });
+                        chartEnv.update("none");
+                    }
+                    if (chartSensor) {
+                        chartSensor.data.labels = [];
+                        chartSensor.data.datasets.forEach(ds => { ds.data = []; });
+                        chartSensor.update("none");
+                    }
+                    return;
+                }
+                updateHistoryCharts(records);
+            } catch (err) {
+                meta.textContent = "历史数据加载失败";
+            }
+        }
+
+        function setHistoryRange(hours) {
+            historyHours = hours;
+            document.querySelectorAll(".history-range").forEach(btn => {
+                btn.classList.toggle("active", Number(btn.dataset.hours) === hours);
+            });
+            fetchHistory();
+        }
+
+        async function fetchData() {
+            const response = await fetch("/data");
+            const data = await response.json();
+            latest = data;
+
+            document.getElementById("temp").textContent = data.temp ?? "--";
+            document.getElementById("humi").textContent = data.humi ?? "--";
+            document.getElementById("light").textContent = data.light ?? "--";
+            document.getElementById("soil").textContent = data.soil ?? "--";
+            document.getElementById("mq2").textContent = data.mq2 ?? "--";
+            document.getElementById("servo").textContent = data.servo ?? "--";
+
+            pumpState = data.pump || 0;
+            fanState = data.fan || 0;
+            fillState = data.fill || 0;
+
+            setBadge("pump_badge", pumpState, "运行中", "关闭");
+            setBadge("fan_badge", fanState, "运行中", "关闭");
+            setBadge("fill_badge", fillState, "开启", "关闭");
+
+            const modeBadge = document.getElementById("mode_badge");
+            if (data.mode === "manual") {
+                modeBadge.textContent = "手动";
+                modeBadge.className = "badge manual";
+                document.getElementById("ctl_mode").value = "1";
+            } else {
+                modeBadge.textContent = "自动";
+                modeBadge.className = "badge auto";
+                document.getElementById("ctl_mode").value = "0";
+            }
+
+            syncThresholdInputs(data);
+
+            const alarm = parseAlarm(data.alarm || 0);
+            const alarmEl = document.getElementById("alarm_text");
+            alarmEl.textContent = alarm.text;
+            alarmEl.className = alarm.warn ? "alarm-warn" : "alarm-ok";
+
+            const dot = document.getElementById("online_dot");
+            const onlineText = document.getElementById("online_text");
+            if (data.online) {
+                dot.className = "dot online";
+                onlineText.textContent = "设备在线";
+            } else {
+                dot.className = "dot offline";
+                onlineText.textContent = "设备离线";
+            }
+
+            document.getElementById("updated_at").textContent =
+                "最近更新：" + (data.updated_at || "--");
+        }
+
+        async function sendControl(extra = {}) {
+            const body = {
+                mode: extra.mode !== undefined ? extra.mode : -1,
+                pump: extra.pump !== undefined ? extra.pump : -1,
+                fan: extra.fan !== undefined ? extra.fan : -1,
+                fill: extra.fill !== undefined ? extra.fill : -1,
+                servo: extra.servo !== undefined ? extra.servo : -1
+            };
+
+            const response = await fetch("/control", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+            const result = await response.json();
+            document.getElementById("control_msg").textContent = result.message;
+        }
+
+        async function sendThreshold() {
+            const body = {
+                temp_open: Number(document.getElementById("th_temp_open").value),
+                temp_close: Number(document.getElementById("th_temp_close").value),
+                light_on_x10: voltToX10("th_light_on"),
+                light_off_x10: voltToX10("th_light_off"),
+                soil_on_x10: voltToX10("th_soil_on"),
+                soil_off_x10: voltToX10("th_soil_off"),
+                mq2_on_x10: voltToX10("th_mq2_on"),
+                mq2_off_x10: voltToX10("th_mq2_off")
+            };
+
+            const response = await fetch("/threshold", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+            const result = await response.json();
+            document.getElementById("threshold_msg").textContent = result.message;
+        }
+
+        function toggleDevice(name) {
+            const body = { mode: 1, servo: -1, pump: -1, fan: -1, fill: -1 };
+            if (name === "pump") {
+                body.pump = pumpState ? 0 : 1;
+            } else if (name === "fan") {
+                body.fan = fanState ? 0 : 1;
+            } else if (name === "fill") {
+                body.fill = fillState ? 0 : 1;
+            }
+            sendControl(body);
+        }
+
+        setInterval(fetchData, 1000);
+        setInterval(fetchHistory, 15000);
+        fetchData();
+        fetchHistory();
+    </script>
+</body>
+</html>

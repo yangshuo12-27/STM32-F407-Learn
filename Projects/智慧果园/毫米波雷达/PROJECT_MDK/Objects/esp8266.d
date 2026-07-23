@@ -1,0 +1,14 @@
+.\objects\esp8266.o: ..\SYSTEM\ESP8266\esp8266.c
+.\objects\esp8266.o: ..\SYSTEM\ESP8266\esp8266.h
+.\objects\esp8266.o: ..\SYSLIB\stm32f10x.h
+.\objects\esp8266.o: ..\SYSLIB\core_cm3.h
+.\objects\esp8266.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\esp8266.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\esp8266.o: ..\SYSTEM\USART\usart.h
+.\objects\esp8266.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\esp8266.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\esp8266.o: ..\SYSTEM\SYS\sys.h
+.\objects\esp8266.o: ..\SYSTEM\LED\led.h
+.\objects\esp8266.o: ..\SYSTEM\SYS\sys.h
+.\objects\esp8266.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\esp8266.o: ..\SYSTEM\DELAY\delay.h

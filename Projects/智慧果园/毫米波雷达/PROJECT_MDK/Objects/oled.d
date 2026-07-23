@@ -1,0 +1,15 @@
+.\objects\oled.o: ..\SYSTEM\OLED\oled.c
+.\objects\oled.o: ..\SYSLIB\stm32f10x.h
+.\objects\oled.o: ..\SYSLIB\core_cm3.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\oled.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\oled.o: ..\SYSTEM\OLED\oled.h
+.\objects\oled.o: ..\SYSTEM\SYS\sys.h
+.\objects\oled.o: ..\SYSTEM\LED\led.h
+.\objects\oled.o: ..\SYSTEM\SYS\sys.h
+.\objects\oled.o: ..\SYSTEM\DELAY\delay.h
+.\objects\oled.o: ..\SYSTEM\OLED\fontdata.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\oled.o: ..\SYSTEM\USART\usart.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

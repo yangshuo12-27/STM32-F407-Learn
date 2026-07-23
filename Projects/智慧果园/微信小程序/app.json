@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "智慧果园",
+    "navigationBarBackgroundColor": "#1b4332",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#edf5f0",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

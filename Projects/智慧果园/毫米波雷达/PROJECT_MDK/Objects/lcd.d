@@ -1,0 +1,14 @@
+.\objects\lcd.o: ..\SYSTEM\LCD\lcd.c
+.\objects\lcd.o: ..\SYSLIB\stm32f10x.h
+.\objects\lcd.o: ..\SYSLIB\core_cm3.h
+.\objects\lcd.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\lcd.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\lcd.o: ..\SYSTEM\LCD\lcd.h
+.\objects\lcd.o: ..\SYSTEM\SYS\sys.h
+.\objects\lcd.o: ..\SYSTEM\LED\led.h
+.\objects\lcd.o: ..\SYSTEM\SYS\sys.h
+.\objects\lcd.o: ..\SYSTEM\DELAY\delay.h
+.\objects\lcd.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\lcd.o: ..\SYSTEM\USART\usart.h
+.\objects\lcd.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\lcd.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

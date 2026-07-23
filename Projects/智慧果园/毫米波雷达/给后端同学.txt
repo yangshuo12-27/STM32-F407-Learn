@@ -1,0 +1,98 @@
+毫米波雷达 —— 给后端同学
+========================
+
+位置：毫米波雷达/
+
+一、HTTP 接口（读雷达数据）
+--------------------------
+文件：radar_api.py
+依赖：pip install requests
+
+示例：
+
+    from radar_api import RadarAPI
+
+    api = RadarAPI("http://47.113.206.147:7070")
+    data = api.get_data()      # 完整 JSON
+    print(api.is_online())
+    print(api.get_status())    # 精简字段
+
+自测：
+    python radar_api.py
+
+接口：
+    GET http://47.113.206.147:7070/radar
+
+
+二、设备模拟器（不插真机）
+--------------------------
+文件：radar_simulator.py
+依赖：无（标准库）
+
+本机运行：
+    python radar_simulator.py
+
+指定服务器：
+    python radar_simulator.py --host 47.113.206.147 --port 7777
+
+会每隔约 2 秒向 TCP 7777 上报雷达 JSON（device=radar）。
+后端即可用 radar_api.py 或直接请求 /radar 拿到数据。
+
+停止：Ctrl+C
+
+若出现 WinError 10053 / 连接被中止：
+  1. 确认只开了一个 radar_simulator（不要开两个）
+  2. 云端 http_server 需已更新：同一类型设备不再踢旧 TCP 连接
+  3. 模拟器会自动重连，一般不影响联调
+
+
+三、字段说明
+------------
+online            是否在线
+updated_at        最近更新时间
+breath            呼吸 次/分
+heart             心率
+presence          有人 1 / 无人 0
+body_status       活跃 1 / 静止 0
+move              体动幅度 0-100
+dist              距离 cm
+x,y,z             方位坐标
+breath_status     1正常 2过高 3过低 4无
+bed               入床 1 / 离床 0
+sleep_quality     0深睡 1浅睡 2清醒 3离床
+sleep_score       睡眠评分 0-100
+sleep_grade       1良好 2一般 3较差
+sleep_abn         睡眠异常 0过短 1过长 2无人 3无
+struggle          挣扎 0正常 1挣扎 2无
+noperson          无人超时 0无 1正常 2异常
+awake_min         清醒时长 分钟
+light_min         浅睡时长 分钟
+deep_min          深睡时长 分钟
+sleep_duration    当前阶段时长 分钟
+sleep_total_min   总睡眠时长 分钟
+avg_breath        平均呼吸
+avg_heart         平均心率
+turns             翻身次数
+temp              红外体温 ℃
+heart_wave        心波 5 点数组 [0~255]
+breath_wave       呼吸波 5 点数组 [0~255]
+heart_wave_avg    心波均值
+breath_wave_avg   呼吸波均值
+leave_bed_min     离床累计分钟
+leave_bed_count   离床次数
+big_move_ratio    大动作占比 %
+small_move_ratio  小动作占比 %
+apnea_count       呼吸暂停次数
+awake_ratio       清醒占比 %
+light_ratio       浅睡占比 %
+deep_ratio        深睡占比 %
+
+
+四、联调步骤（推荐）
+--------------------
+1. 确认云服务器已更新最新 http_server.py 并 restart
+2. 同学 A 运行：python radar_simulator.py
+3. 同学 B 运行：python radar_api.py
+   或浏览器打开：http://47.113.206.147:7070/radar
+4. 真机需重新编译烧录毫米波雷达固件后才会上报扩展字段
+5. 测完关掉模拟器即可

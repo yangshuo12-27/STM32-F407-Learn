@@ -1,0 +1,16 @@
+.\objects\adc.o: ..\SYSTEM\ADC\adc.c
+.\objects\adc.o: ..\SYSTEM\ADC\adc.h
+.\objects\adc.o: ..\SYSLIB\stm32f10x.h
+.\objects\adc.o: ..\SYSLIB\core_cm3.h
+.\objects\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\adc.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\adc.o: ..\SYSTEM\LED\led.h
+.\objects\adc.o: ..\SYSTEM\SYS\sys.h
+.\objects\adc.o: ..\SYSTEM\LED\led.h
+.\objects\adc.o: ..\SYSTEM\KEY\key.h
+.\objects\adc.o: ..\SYSTEM\DELAY\delay.h
+.\objects\adc.o: ..\SYSTEM\USART\usart.h
+.\objects\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\adc.o: ..\SYSTEM\TIMER\timer.h

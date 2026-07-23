@@ -1,0 +1,122 @@
+Dependencies for Project 'STM32HD', Target 'STM32F103RCT6': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (..\SYSTEM\DELAY\delay.c)(0x658667D0)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
+I (..\SYSTEM\DELAY\delay.h)(0x5EFFEB0C)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+F (..\SYSTEM\KEY\key.c)(0x63F48520)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
+I (..\SYSTEM\KEY\key.h)(0x624FA3DC)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (..\SYSTEM\DELAY\delay.h)(0x5EFFEB0C)
+F (..\SYSTEM\LED\led.c)(0x65B3BA90)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+F (..\SYSTEM\SYS\sys.c)(0x6776E1F0)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\sys.o --omf_browse .\objects\sys.crf --depend .\objects\sys.d)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+F (..\SYSTEM\TIMER\timer.c)(0x676D6AB2)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+I (..\SYSTEM\TIMER\timer.h)(0x5F044128)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (..\SYSTEM\USART\usart.h)(0x676D752E)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
+I (D:\App\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+F (..\SYSTEM\USART\usart.c)(0x676D7528)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
+I (..\SYSTEM\USART\usart.h)(0x676D752E)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (D:\App\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+F (..\FONT\font.c)(0x676D7EC4)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\font.o --omf_browse .\objects\font.crf --depend .\objects\font.d)
+F (..\SYSTEM\ESP8266\esp8266.c)(0x67D38EAA)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\esp8266.o --omf_browse .\objects\esp8266.crf --depend .\objects\esp8266.d)
+I (..\SYSTEM\ESP8266\esp8266.h)(0x5F090F58)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\USART\usart.h)(0x676D752E)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (D:\App\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\SYSTEM\DELAY\delay.h)(0x5EFFEB0C)
+F (..\SYSTEM\LCD\lcd.c)(0x65DDBA0A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\lcd.o --omf_browse .\objects\lcd.crf --depend .\objects\lcd.d)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\LCD\lcd.h)(0x653A0262)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (..\SYSTEM\DELAY\delay.h)(0x5EFFEB0C)
+I (D:\App\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\SYSTEM\USART\usart.h)(0x676D752E)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
+F (..\SYSTEM\MLX90614\MLX90614.c)(0x67CEDCE8)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\mlx90614.o --omf_browse .\objects\mlx90614.crf --depend .\objects\mlx90614.d)
+I (..\SYSTEM\MLX90614\MLX90614.h)(0x67CEDB70)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (..\SYSTEM\DELAY\delay.h)(0x5EFFEB0C)
+I (..\SYSTEM\USART\usart.h)(0x676D752E)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
+I (D:\App\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+F (..\USER\main.c)(0x69F764F6)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+I (..\SYSTEM\LED\led.h)(0x65B3BADE)
+I (..\SYSTEM\SYS\sys.h)(0x5F04203A)
+I (..\SYSTEM\DELAY\delay.h)(0x5EFFEB0C)
+I (..\SYSTEM\KEY\key.h)(0x624FA3DC)
+I (..\SYSTEM\USART\usart.h)(0x676D752E)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x60252376)
+I (D:\App\Keil_v5\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\SYSTEM\TIMER\timer.h)(0x5F044128)
+I (..\SYSTEM\LCD\lcd.h)(0x653A0262)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\FONT\font.h)(0x62334A84)
+I (D:\App\Keil_v5\ARM\ARMCC\include\math.h)(0x60252378)
+I (..\SYSTEM\ESP8266\esp8266.h)(0x5F090F58)
+I (..\SYSTEM\MLX90614\MLX90614.h)(0x67CEDB70)
+F (..\SYSLIB\core_cm3.c)(0x4C0C587E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+F (..\SYSLIB\system_stm32f10x.c)(0x4D783CB0)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+I (..\SYSLIB\stm32f10x.h)(0x4D783CB4)
+I (..\SYSLIB\core_cm3.h)(0x4D523B58)
+I (D:\App\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\SYSLIB\system_stm32f10x.h)(0x4D783CAA)
+F (..\SYSLIB\startup_stm32f10x_hd.s)(0x4D783CDE)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 543" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)

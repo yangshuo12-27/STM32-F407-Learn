@@ -1,0 +1,14 @@
+.\objects\bh1750.o: ..\SYSTEM\BH1750\bh1750.c
+.\objects\bh1750.o: ..\SYSTEM\BH1750\bh1750.h
+.\objects\bh1750.o: ..\SYSTEM\DELAY\delay.h
+.\objects\bh1750.o: ..\SYSLIB\stm32f10x.h
+.\objects\bh1750.o: ..\SYSLIB\core_cm3.h
+.\objects\bh1750.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bh1750.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\bh1750.o: ..\SYSTEM\USART\usart.h
+.\objects\bh1750.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bh1750.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\bh1750.o: ..\SYSTEM\SYS\sys.h
+.\objects\bh1750.o: ..\SYSTEM\LED\led.h
+.\objects\bh1750.o: ..\SYSTEM\SYS\sys.h
+.\objects\bh1750.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

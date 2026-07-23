@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\SYSTEM\OLED -I ..\SYSTEM\ADC -I ..\FONT -I ..\SYSTEM\RTC -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\MQTT -I ..\SYSTEM\HX711 -I ..\SYSTEM\MOTOR -I ..\SYSTEM\DHT11
+-I.\RTE\_STM32F103RCT6
+-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include
+-IC:\Keil_v5\ARM\CMSIS\Include
+-D__UVISION_VERSION="525" -DSTM32F10X_HD -DSTM32F10X_HD
+-o .\objects\oled.o --omf_browse .\objects\oled.crf --depend .\objects\oled.d "..\SYSTEM\OLED\oled.c"

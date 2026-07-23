@@ -1,0 +1,11 @@
+.\objects\mpu6050.o: ..\SYSTEM\MPU6050\mpu6050.c
+.\objects\mpu6050.o: ..\SYSTEM\MPU6050\mpu6050.h
+.\objects\mpu6050.o: ..\SYSLIB\stm32f10x.h
+.\objects\mpu6050.o: ..\SYSLIB\core_cm3.h
+.\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mpu6050.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\mpu6050.o: ..\SYSTEM\SYS\sys.h
+.\objects\mpu6050.o: ..\SYSTEM\LED\led.h
+.\objects\mpu6050.o: ..\SYSTEM\SYS\sys.h
+.\objects\mpu6050.o: ..\SYSTEM\DELAY\delay.h
+.\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

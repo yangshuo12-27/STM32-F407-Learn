@@ -1,0 +1,9 @@
+# Keil编译垃圾文件
+Objects/
+Listings/
+*.hex *.bin *.axf *.map *.o *.d *.bak *.uvoptx
+# PlatformIO编译缓存
+.pio/
+# Python缓存
+__pycache__/
+*.log

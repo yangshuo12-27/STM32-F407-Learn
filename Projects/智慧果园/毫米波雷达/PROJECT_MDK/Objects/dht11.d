@@ -1,0 +1,10 @@
+.\objects\dht11.o: ..\SYSTEM\DHT11\dht11.c
+.\objects\dht11.o: ..\SYSTEM\DHT11\dht11.h
+.\objects\dht11.o: ..\SYSTEM\SYS\sys.h
+.\objects\dht11.o: ..\SYSLIB\stm32f10x.h
+.\objects\dht11.o: ..\SYSLIB\core_cm3.h
+.\objects\dht11.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dht11.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\dht11.o: ..\SYSTEM\LED\led.h
+.\objects\dht11.o: ..\SYSTEM\SYS\sys.h
+.\objects\dht11.o: ..\SYSTEM\DELAY\delay.h

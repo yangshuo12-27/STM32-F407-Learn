@@ -1,0 +1,10 @@
+.\objects\motor.o: ..\SYSTEM\MOTOR\motor.c
+.\objects\motor.o: ..\SYSTEM\MOTOR\motor.h
+.\objects\motor.o: ..\SYSTEM\SYS\sys.h
+.\objects\motor.o: ..\SYSLIB\stm32f10x.h
+.\objects\motor.o: ..\SYSLIB\core_cm3.h
+.\objects\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\motor.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\motor.o: ..\SYSTEM\LED\led.h
+.\objects\motor.o: ..\SYSTEM\SYS\sys.h
+.\objects\motor.o: ..\SYSTEM\DELAY\delay.h

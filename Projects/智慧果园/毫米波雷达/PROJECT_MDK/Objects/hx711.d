@@ -1,0 +1,11 @@
+.\objects\hx711.o: ..\SYSTEM\HX711\HX711.c
+.\objects\hx711.o: ..\SYSTEM\HX711\HX711.h
+.\objects\hx711.o: ..\SYSTEM\SYS\sys.h
+.\objects\hx711.o: ..\SYSLIB\stm32f10x.h
+.\objects\hx711.o: ..\SYSLIB\core_cm3.h
+.\objects\hx711.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hx711.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\hx711.o: ..\SYSTEM\LED\led.h
+.\objects\hx711.o: ..\SYSTEM\SYS\sys.h
+.\objects\hx711.o: ..\SYSTEM\DELAY\delay.h
+.\objects\hx711.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

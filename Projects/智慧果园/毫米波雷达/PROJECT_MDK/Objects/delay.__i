@@ -1,0 +1,4 @@
+--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\SYSLIB -I ..\SYSTEM\DELAY -I ..\SYSTEM\KEY -I ..\SYSTEM\LED -I ..\SYSTEM\SYS -I ..\SYSTEM\TIMER -I ..\SYSTEM\USART -I ..\MQTT -I ..\FONT -I ..\SYSTEM\ESP8266 -I ..\SYSTEM\DHT11 -I ..\SYSTEM\LCD -I ..\SYSTEM\LED -I ..\SYSTEM\MLX90614
+-ID:\App\Keil_v5\Keil\STM32F1xx_DFP\2.4.1\Device\Include
+-D__UVISION_VERSION="543" -DSTM32F10X_HD -DSTM32F10X_HD
+-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d "..\SYSTEM\DELAY\delay.c"

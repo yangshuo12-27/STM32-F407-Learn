@@ -1,0 +1,12 @@
+.\objects\usart.o: ..\SYSTEM\USART\usart.c
+.\objects\usart.o: ..\SYSTEM\USART\usart.h
+.\objects\usart.o: ..\SYSLIB\stm32f10x.h
+.\objects\usart.o: ..\SYSLIB\core_cm3.h
+.\objects\usart.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\usart.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\usart.o: ..\SYSTEM\SYS\sys.h
+.\objects\usart.o: ..\SYSTEM\LED\led.h
+.\objects\usart.o: ..\SYSTEM\SYS\sys.h
+.\objects\usart.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

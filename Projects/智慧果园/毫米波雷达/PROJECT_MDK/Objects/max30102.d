@@ -1,0 +1,15 @@
+.\objects\max30102.o: ..\SYSTEM\MAX30102\MAX30102.c
+.\objects\max30102.o: ..\SYSTEM\MAX30102\MAX30102.h
+.\objects\max30102.o: ..\SYSTEM\DELAY\delay.h
+.\objects\max30102.o: ..\SYSLIB\stm32f10x.h
+.\objects\max30102.o: ..\SYSLIB\core_cm3.h
+.\objects\max30102.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\max30102.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\max30102.o: ..\SYSTEM\SYS\sys.h
+.\objects\max30102.o: ..\SYSTEM\LED\led.h
+.\objects\max30102.o: ..\SYSTEM\SYS\sys.h
+.\objects\max30102.o: ..\SYSTEM\USART\usart.h
+.\objects\max30102.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\max30102.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\max30102.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\max30102.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

@@ -1,0 +1,51 @@
+智慧果园监控系统 - 使用说明
+================================
+
+一、功能说明
+  - TCP 7777：同时接收 智慧果园 与 毫米波雷达 上报的 JSON
+  - HTTP 7070：浏览器访问智慧果园大屏
+  - GET /data：果园实时数据
+  - GET /radar：毫米波雷达实时数据
+  - GET /devices：两台设备在线状态
+  - 历史数据：SQLite orchard_history.db，默认保留 30 天（果园传感器）
+  - 果园字段：温度、湿度、光照、土壤、气体、模式、水泵/风扇/补光/舵机、告警
+  - 雷达字段：device=radar，breath/heart/presence/dist/sleep_* 等
+
+二、环境准备
+  1. 安装 Python 3
+  2. 安装依赖：pip install flask
+  3. 在本目录运行：python http_server.py
+
+三、STM32 配置
+  智慧果园 WiFiConfig.h：
+    TCP_SERVER_HOST = 云服务器公网 IP
+    TCP_SERVER_PORT = 7777
+
+  毫米波雷达 USER/main.c：
+    CONNECT_SERVER_IP / CONNECT_SERVER_PORT = 同上（共用 7777）
+    WiFi：CONNECT_WIFI / CONNECT_PASS（需 2.4GHz）
+    上报 JSON 必须带 "device":"radar"
+
+  果园上报示例：
+  {"temp":27.6,"humi":37,"light":5.0,"soil":1.9,"mq2":0.5,
+   "mode":"auto","pump":0,"fan":0,"fill":1,"servo":0,"alarm":0}
+
+  雷达上报示例：
+  {"device":"radar","breath":16,"heart":72,"presence":1,"dist":80,"temp":36.5}
+
+四、访问接口
+  大屏：http://服务器IP:7070
+  雷达：http://服务器IP:7070/radar
+  设备：http://服务器IP:7070/devices
+  云服务器需放行 7777 和 7070
+
+五、与旧版 recv.py 的关系
+  - 本程序已集成 TCP 接收 + Web 大屏，可替代单独的 recv.py
+  - 若 ECS 上仍运行 stm32-tcp.service，请先停止，避免 7777 端口冲突：
+    sudo systemctl stop stm32-tcp
+  - 更新后需：sudo systemctl restart smart-orchard
+
+六、远程控制与阈值
+  大屏可远程控制水泵/风扇/补光/舵机，并设置阈值。
+  控制仅下发到智慧果园设备，不影响雷达。
+  控制前请切换为手动模式。

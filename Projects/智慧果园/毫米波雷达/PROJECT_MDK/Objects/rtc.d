@@ -1,0 +1,14 @@
+.\objects\rtc.o: ..\SYSTEM\RTC\rtc.c
+.\objects\rtc.o: ..\SYSTEM\RTC\rtc.h
+.\objects\rtc.o: ..\SYSLIB\stm32f10x.h
+.\objects\rtc.o: ..\SYSLIB\core_cm3.h
+.\objects\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rtc.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\rtc.o: ..\SYSTEM\DELAY\delay.h
+.\objects\rtc.o: ..\SYSTEM\SYS\sys.h
+.\objects\rtc.o: ..\SYSTEM\LED\led.h
+.\objects\rtc.o: ..\SYSTEM\SYS\sys.h
+.\objects\rtc.o: ..\SYSTEM\USART\usart.h
+.\objects\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

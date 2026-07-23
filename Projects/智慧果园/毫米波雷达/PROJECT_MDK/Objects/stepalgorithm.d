@@ -1,0 +1,17 @@
+.\objects\stepalgorithm.o: ..\SYSTEM\StepAlgorithm\stepAlgorithm.c
+.\objects\stepalgorithm.o: ..\SYSTEM\StepAlgorithm\stepAlgorithm.h
+.\objects\stepalgorithm.o: ..\SYSTEM\RTC\rtc.h
+.\objects\stepalgorithm.o: ..\SYSLIB\stm32f10x.h
+.\objects\stepalgorithm.o: ..\SYSLIB\core_cm3.h
+.\objects\stepalgorithm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stepalgorithm.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\stepalgorithm.o: ..\SYSTEM\DELAY\delay.h
+.\objects\stepalgorithm.o: ..\SYSTEM\SYS\sys.h
+.\objects\stepalgorithm.o: ..\SYSTEM\LED\led.h
+.\objects\stepalgorithm.o: ..\SYSTEM\SYS\sys.h
+.\objects\stepalgorithm.o: ..\SYSTEM\USART\usart.h
+.\objects\stepalgorithm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\stepalgorithm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\stepalgorithm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\stepalgorithm.o: ..\SYSTEM\MPU6050\mpu6050.h
+.\objects\stepalgorithm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

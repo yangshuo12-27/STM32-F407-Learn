@@ -1,0 +1,11 @@
+.\objects\ds18b20.o: ..\SYSTEM\DS18B20\ds18b20.c
+.\objects\ds18b20.o: ..\SYSTEM\DS18B20\ds18b20.h
+.\objects\ds18b20.o: ..\SYSLIB\stm32f10x.h
+.\objects\ds18b20.o: ..\SYSLIB\core_cm3.h
+.\objects\ds18b20.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ds18b20.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\ds18b20.o: ..\SYSTEM\DELAY\delay.h
+.\objects\ds18b20.o: ..\SYSTEM\SYS\sys.h
+.\objects\ds18b20.o: ..\SYSTEM\LED\led.h
+.\objects\ds18b20.o: ..\SYSTEM\SYS\sys.h
+.\objects\ds18b20.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

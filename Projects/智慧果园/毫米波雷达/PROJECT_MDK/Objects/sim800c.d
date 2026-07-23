@@ -1,0 +1,14 @@
+.\objects\sim800c.o: ..\SYSTEM\SIM800C\sim800c.c
+.\objects\sim800c.o: ..\SYSTEM\SIM800C\sim800c.h
+.\objects\sim800c.o: ..\SYSLIB\stm32f10x.h
+.\objects\sim800c.o: ..\SYSLIB\core_cm3.h
+.\objects\sim800c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sim800c.o: ..\SYSLIB\system_stm32f10x.h
+.\objects\sim800c.o: ..\SYSTEM\USART\usart.h
+.\objects\sim800c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sim800c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\sim800c.o: ..\SYSTEM\SYS\sys.h
+.\objects\sim800c.o: ..\SYSTEM\LED\led.h
+.\objects\sim800c.o: ..\SYSTEM\SYS\sys.h
+.\objects\sim800c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sim800c.o: ..\SYSTEM\DELAY\delay.h

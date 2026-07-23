@@ -1,0 +1,19 @@
+--cpu Cortex-M3
+".\objects\delay.o"
+".\objects\key.o"
+".\objects\led.o"
+".\objects\sys.o"
+".\objects\timer.o"
+".\objects\usart.o"
+".\objects\font.o"
+".\objects\esp8266.o"
+".\objects\lcd.o"
+".\objects\mlx90614.o"
+".\objects\main.o"
+".\objects\core_cm3.o"
+".\objects\system_stm32f10x.o"
+".\objects\startup_stm32f10x_hd.o"
+--library_type=microlib --strict --scatter ".\Objects\STM32HD.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\STM32HD.map" -o .\Objects\STM32HD.axf
